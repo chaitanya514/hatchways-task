@@ -1,20 +1,17 @@
 import React,{useState} from "react"
 import "./Style.css"
+import Tag from "./Tag"
 
 
 
 const ListItem = (props) => {
-    const [tag,setTag]=useState('')
     const students = Array.from(props.students)
     const avg = (grades) => {
         const sum = grades.reduce((a, b) => Number(a) + Number(b));
         const result = sum / grades.length;
         return result;
     }
-const handleClick=(e)=>{
-    const tag = e.target.value
-            setTag(tag)
-}
+
 
     const listItems = students.map((student) =>
         <div key={student.id}>
@@ -27,7 +24,7 @@ const handleClick=(e)=>{
                 <p>Company:{student.company}</p>
                 <p>Skill:{student.skill}</p>
                 <p>Average:{avg(student.grades)}%</p>
-                <input type="text" placeholder="Add Tag" value={tag} onClick={(e)=>handleClick(e)}/>
+                <Tag />
            </div>
             
             <hr />
